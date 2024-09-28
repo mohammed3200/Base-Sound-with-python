@@ -19,7 +19,7 @@ import wave
 # - framerate/sample-rate: 44,100 Hz
 # - number of frames
 # - values of a frame
-def Info_Wave():
+def Info_wave():
   obj = wave.open("sound/ocean-waves-112906.wav","rb")
   
   print("Number of channels",obj.getnchannels())
