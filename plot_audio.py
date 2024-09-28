@@ -1,8 +1,8 @@
 import wave
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import numpy as np
 
-obj = wave.open("sound/ocean-waves-112906.wav","rb")
+obj = wave.open("sound/ocean-waves-112906.wav", "rb")
 
 sample_freq = obj.getframerate()
 n_samples = obj.getnframes()
@@ -12,17 +12,16 @@ obj.close()
 
 t_audio = n_samples / sample_freq
 
-print(t_audio)
+signal_array = np.frombuffer(signal_wave, dtype=np.int32)
 
-signal_array = np.frombuffer(signal_wave,dtype=np.int26)
+times = np.linspace(0, t_audio, num=n_samples)
 
 
-times = np.linspace(0,t_audio,num=n_samples)
-
-# plt.figure(figsize=(15,5))
-# plt.plot(times,signal_array)
-# plt.title("Audio Signal")
-# plt.ylabel("Signal wave")
-# plt.xlabel("Time (s)")
-# plt.xlim(0,t_audio)
-# plt.show()
+def plot_audio():
+  plt.figure(figsize=(15, 5))
+  plt.plot(times, signal_array)
+  plt.title("Audio Signal")
+  plt.ylabel("Signal wave")
+  plt.xlabel("Time (s)")
+  plt.xlim(0, t_audio)
+  plt.show()
