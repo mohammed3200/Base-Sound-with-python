@@ -1,5 +1,6 @@
 {pkgs}: {
   deps = [
+    pkgs.python312Packages.conda
     pkgs.tk
     pkgs.tcl
     pkgs.qhull
@@ -10,5 +11,6 @@
     pkgs.freetype
     pkgs.ffmpeg-full
     pkgs.cairo
+    pkgs.brew
   ];
 }
