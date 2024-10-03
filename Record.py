@@ -8,7 +8,7 @@ import os
 def RecordSound():
 
   FORMAT = pyaudio.paInt16
-  CHANNLS = 1
+  CHANNELS = 1
   RATE = 44100
   CHUNK = 1024
 
@@ -20,7 +20,7 @@ def RecordSound():
 
   audio = pyaudio.PyAudio()
   stream = audio.open(format=FORMAT,
-                      channels=CHANNLS,
+                      channels=CHANNELS,
                       rate=RATE,
                       input=True,
                       frames_per_buffer=CHUNK)
@@ -48,9 +48,11 @@ def RecordSound():
   audio.terminate()
 
   waveFile = wave.open(OUTPUT_FILENAME, 'wb')
-  waveFile.setnchannels(CHANNLS)
+  waveFile.setnchannels(CHANNELS)
   waveFile.setsampwidth(audio.get_sample_size(FORMAT))
   waveFile.setframerate(RATE)
   waveFile.writeframes(b''.join(frames))
   waveFile.close()
   print("Finished recording. Saved to", OUTPUT_FILENAME)
+
+RecordSound()
